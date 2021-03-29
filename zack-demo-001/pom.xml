@@ -28,15 +28,14 @@
     </modules>
 
     <properties>
-        <java.version>1.8</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
         <!-- +++++++++++++++++ 本项目统一版本声明，版本声明不允许直接定义在子模块中 +++++++++++++++++ -->
 
         <!-- 本项目版本声明 -->
         <revision>1.0-SNAPSHOT</revision>
 
-        <!-- 本项目mvn插件版本声明 -->
+        <!-- 本项目插件版本声明 -->
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven-source-plugin.version>3.0.0</maven-source-plugin.version>

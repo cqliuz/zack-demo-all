@@ -1,7 +1,7 @@
-# mvn多模块示例项目
+# Zack 示例工程
 
 #### 介绍
-提供了一套较为清晰的mvn多模块依赖版本管理机制
+提供常用的实践示例
 
-#### mvn多模块示例项目-模块依赖关系
-![mvn多模块示例项目-模块依赖关系图.png](http://github.com.cn/hizack/zack-demo/raw/master/file/modules.png)
+#### 模块清单
+##### [zack-demo-001] 提供了一套较为清晰的mvn多模块依赖版本管理机制

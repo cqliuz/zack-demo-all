@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>zack-demo-001</artifactId>
+        <groupId>com.zackdemo</groupId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>zack-demo-common</artifactId>
+    <packaging>jar</packaging>
+
+    <name>zack-demo-common</name>
+    <description>mvn多模块示例项目-公共模块</description>
+
+    <dependencies>
+        <!-- ++++++++++++++ Commons ++++++++++++++ -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
+        <!-- ++++++++++++++ End Of Commons ++++++++++++++ -->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- mvn 发布私服插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

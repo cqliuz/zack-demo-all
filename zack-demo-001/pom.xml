@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.zackdemo</groupId>
+    <artifactId>zack-demo-001</artifactId>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+
+    <name>zack-demo-001</name>
+    <description>mvn多模块示例项目（父项目）</description>
+
+    <!-- Spring Boot Starter Parent -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.4.RELEASE</version>
+    </parent>
+
+    <!-- 项目子模块 -->
+    <modules>
+        <module>zack-demo-admin</module>
+        <module>zack-demo-api</module>
+        <module>zack-demo-service</module>
+        <module>zack-demo-common</module>
+    </modules>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- +++++++++++++++++ 本项目统一版本声明，版本声明不允许直接定义在子模块中 +++++++++++++++++ -->
+
+        <!-- 本项目版本声明 -->
+        <revision>1.0-SNAPSHOT</revision>
+
+        <!-- 本项目mvn插件版本声明 -->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven-source-plugin.version>3.0.0</maven-source-plugin.version>
+        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+        <spring-boot-maven-plugin.version>2.0.4.RELEASE</spring-boot-maven-plugin.version>
+        <flatten-maven-plugin.version>1.1.0</flatten-maven-plugin.version>
+
+        <!-- 本项目基础依赖版本声明 -->
+        <springboot.version>2.0.4.RELEASE</springboot.version>
+        <springcloud.version>Finchley.SR2</springcloud.version>
+        <springcloud-starter.version>2.0.2.RELEASE</springcloud-starter.version>
+        <fastjson.version>1.2.30</fastjson.version>
+        <google.guava.version>23.0</google.guava.version>
+        <hutool-all.version>5.0.6</hutool-all.version>
+        <junit.jupiter.version>5.8.0-M1</junit.jupiter.version>
+
+        <!-- 本项目依赖的其它项目版本声明 -->
+        <other-service-api.version>1.0.0-SNAPSHOT</other-service-api.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- ++++++++++++++ Spring Boot ++++++++++++++ -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-aop</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-amqp</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${springboot.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- ++++++++++++++ End Of Spring Boot ++++++++++++++ -->
+
+            <!-- ++++++++++++++ Spring Cloud ++++++++++++++ -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${springcloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-commons</artifactId>
+                <version>${springcloud-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>${springcloud-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+                <version>${springcloud-starter.version}</version>
+            </dependency>
+            <!-- ++++++++++++++ End Of Spring Cloud ++++++++++++++ -->
+
+            <!-- ++++++++++++++ Commons ++++++++++++++ -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${google.guava.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool-all.version}</version>
+            </dependency>
+            <!-- ++++++++++++++ End Of Commons ++++++++++++++ -->
+
+            <!-- ++++++++++++++ Custom Component ++++++++++++++ -->
+            <!--<dependency>
+                <groupId>com.zack.demo</groupId>
+                <artifactId>other-service-api</artifactId>
+                <version>${other-service-api.version}</version>
+            </dependency>-->
+            <!-- ++++++++++++++ End Of Custom Component ++++++++++++++ -->
+
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- 指定系统模块统一依赖 -->
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- mvn 源码打包插件 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven-source-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- mvn 发布私服插件 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven-deploy-plugin.version}</version>
+                </plugin>
+
+                <!-- Spring Boot 工程打包插件 -->
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot-maven-plugin.version}</version>
+                </plugin>
+
+                <!-- 生成压缩版的pom.xml，在install和deploy阶段使用压缩后的pom.xml文件 -->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>flatten-maven-plugin</artifactId>
+                    <version>${flatten-maven-plugin.version}</version>
+                    <configuration>
+                        <updatePomFile>true</updatePomFile>
+                        <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>flatten</id>
+                            <phase>process-resources</phase>
+                            <goals>
+                                <goal>flatten</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>flatten.clean</id>
+                            <phase>clean</phase>
+                            <goals>
+                                <goal>clean</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <!-- 指定系统模块插件统一依赖 -->
+        <plugins>
+            <!-- mvn 源码打包插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+
+            <!-- 使用压缩版的pom.xml -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- 指定mvn私服 -->
+    <!--
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <url>http://www.xxx/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <url>http://www.xxx/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+    -->
+
+</project>
